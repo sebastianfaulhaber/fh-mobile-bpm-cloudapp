@@ -45,7 +45,7 @@ submissionEventListener.on('submissionComplete', function(params){
   var submissionId = params.submissionId;
   var submissionCompletedTimestamp = params.submissionCompletedTimestamp;
   console.log("Submission with ID " + submissionId + " has completed at " + submissionCompletedTimestamp);
-  console.log(params);  
+  console.log(params.submission.formFields);  
 
 });
 
