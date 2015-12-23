@@ -45,10 +45,17 @@ submissionEventListener.on('submissionComplete', function(params){
   var submissionId = params.submissionId;
   var submissionCompletedTimestamp = params.submissionCompletedTimestamp;
   console.log("Submission with ID " + submissionId + " has completed at " + submissionCompletedTimestamp);
+  
+  fh.forms.getSubmission({
+  "submissionId": submissionId
+    }, function (err, submission) {
+    if (err) return handleError(err);
+      console.log("###sub###" + submission);
+      return callback(undefined, submission); 
+    });
 });
 
 mbaasApi.forms.registerListener(submissionEventListener, function(err){
   if (err) return handleError(err);
-
   //submissionEventListener has now been registered with the $fh.forms Cloud API. Any valid Forms Events will now emit.
 });
