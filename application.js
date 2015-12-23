@@ -48,11 +48,13 @@ submissionEventListener.on('submissionComplete', function(params){
   
   var myParamsForRESTCall = "";
   for (var i=0; i<params.submission.formFields.length; i++) {
-      myParamsForRESTCall += "&";
-      myParamsForRESTCall += myFormFieldsparams.submission.formFields[i];
+      myParamsForRESTCall += "&map_";
+      myParamsForRESTCall += myFormFieldsparams.submission.formFields[i].fieldId.fieldCode;
+      myParamsForRESTCall += "=";
+      myParamsForRESTCall += myFormFieldsparams.submission.formFields[i].fieldValues[0];
   }
   
-  console.log(params.submission.formFields);  
+  console.log("myParamsForRESTCall = " + myParamsForRESTCall);  
 
 });
 
