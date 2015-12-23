@@ -46,7 +46,7 @@ submissionEventListener.on('submissionComplete', function(params){
   var submissionCompletedTimestamp = params.submissionCompletedTimestamp;
   console.log("Submission with ID " + submissionId + " has completed at " + submissionCompletedTimestamp);
   
-  fh.forms.getSubmission({
+  mbaasApi.forms.getSubmission({
   "submissionId": submissionId
     }, function (err, submission) {
     if (err) return handleError(err);
