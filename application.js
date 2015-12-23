@@ -47,7 +47,7 @@ submissionEventListener.on('submissionComplete', function(params){
   console.log("Submission with ID " + submissionId + " has completed at " + submissionCompletedTimestamp);
 });
 
-$fh.forms.registerListener(submissionEventListener, function(err){
+mbaasApi.forms.registerListener(submissionEventListener, function(err){
   if (err) return handleError(err);
 
   //submissionEventListener has now been registered with the $fh.forms Cloud API. Any valid Forms Events will now emit.
