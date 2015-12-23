@@ -57,7 +57,7 @@ submissionEventListener.on('submissionComplete', function(params){
   console.log("myParamsForRESTCall = " + myParamsForRESTCall);
 
   // Execute REST Call to BPM
-  require('http');
+  var http = require('http');
   var options = {
     hostname: '209.132.179.9',
     port: 8080,
