@@ -58,13 +58,12 @@ submissionEventListener.on('submissionComplete', function(params){
 
   // Execute REST Call to BPM
   var options = {
-    hostname: 'www.google.com',
-    port: 80,
-    path: '/upload',
+    hostname: '209.132.179.9',
+    port: 8080,
+    path: '/business-central/rest/runtime/test:stp:1.0/process/stp.my-process/start?' + myParamsForRESTCall,
     method: 'POST',
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Content-Length': postData.length
+      'Accept': 'application/json',
     }
   };
   
@@ -81,9 +80,10 @@ submissionEventListener.on('submissionComplete', function(params){
   });
   
   req.on('error', function(e) {
-    console.log('problem with request: ' + e.message);
+    console.log('Problem with request: ' + e.message);
   });
   
+  req.write("");
   req.end();
 
 });
