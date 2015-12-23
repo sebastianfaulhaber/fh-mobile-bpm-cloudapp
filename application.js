@@ -46,6 +46,7 @@ submissionEventListener.on('submissionComplete', function(params){
   var submissionCompletedTimestamp = params.submissionCompletedTimestamp;
   console.log("Submission with ID " + submissionId + " has completed at " + submissionCompletedTimestamp);
   
+  // Prepare params for REST call
   var myParamsForRESTCall = "";
   for (var i=0; i<params.submission.formFields.length; i++) {
       myParamsForRESTCall += "&map_";
@@ -53,8 +54,37 @@ submissionEventListener.on('submissionComplete', function(params){
       myParamsForRESTCall += "=";
       myParamsForRESTCall += params.submission.formFields[i].fieldValues[0];
   }
+  console.log("myParamsForRESTCall = " + myParamsForRESTCall);
+
+  // Execute REST Call to BPM
+  var options = {
+    hostname: 'www.google.com',
+    port: 80,
+    path: '/upload',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Length': postData.length
+    }
+  };
   
-  console.log("myParamsForRESTCall = " + myParamsForRESTCall);  
+  var req = http.request(options, function(res) {
+    console.log('STATUS: ' + res.statusCode);
+    console.log('HEADERS: ' + JSON.stringify(res.headers));
+    res.setEncoding('utf8');
+    res.on('data', function (chunk) {
+      console.log('BODY: ' + chunk);
+    });
+    res.on('end', function() {
+      console.log('No more data in response.')
+    })
+  });
+  
+  req.on('error', function(e) {
+    console.log('problem with request: ' + e.message);
+  });
+  
+  req.end();
 
 });
 
