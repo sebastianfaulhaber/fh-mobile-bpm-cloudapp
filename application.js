@@ -63,6 +63,7 @@ submissionEventListener.on('submissionComplete', function(params){
     port: 8080,
     path: '/business-central/rest/runtime/test:stp:1.0/process/stp.my-process/start?' + myParamsForRESTCall,
     method: 'POST',
+    auth: 'erics:bpmsuite1!',
     headers: {
       'Accept': 'application/json',
     }
