@@ -32,3 +32,23 @@ var host = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 app.listen(port, host, function() {
   console.log("App started at: " + new Date() + " on port: " + port); 
 });
+
+//#############################################################################
+//# FORM SUBMISSION LISTENER
+//#############################################################################
+
+//NodeJS Events Module. Note, this is required to register event emitter objects to forms.
+var events = require('events');
+var submissionEventListener = new events.EventEmitter();
+
+submissionEventListener.on('submissionComplete', function(params){
+  var submissionId = params.submissionId;
+  var submissionCompletedTimestamp = params.submissionCompletedTimestamp;
+  console.log("Submission with ID " + submissionId + " has completed at " + submissionCompletedTimestamp);
+});
+
+$fh.forms.registerListener(submissionEventListener, function(err){
+  if (err) return handleError(err);
+
+  //submissionEventListener has now been registered with the $fh.forms Cloud API. Any valid Forms Events will now emit.
+});
