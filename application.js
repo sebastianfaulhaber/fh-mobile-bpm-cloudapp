@@ -45,14 +45,8 @@ submissionEventListener.on('submissionComplete', function(params){
   var submissionId = params.submissionId;
   var submissionCompletedTimestamp = params.submissionCompletedTimestamp;
   console.log("Submission with ID " + submissionId + " has completed at " + submissionCompletedTimestamp);
-  
-  mbaasApi.forms.getSubmission({
-  "submissionId": submissionId
-    }, function (err, submission) {
-    if (err) return handleError(err);
-      console.log("###sub###" + submission);
-      return callback(undefined, submission); 
-    });
+  console.log(params);  
+
 });
 
 mbaasApi.forms.registerListener(submissionEventListener, function(err){
