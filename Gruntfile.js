@@ -46,6 +46,10 @@ module.exports = function(grunt) {
       options: {},
       // environment variables - see https://github.com/jsoverson/grunt-env for more information
       local: {
+        BPM_URI_HOSTNAME: '209.132.178.208',
+        BPM_URI_PORT: '8080',
+        BPM_AUTH_USERNAME: 'psteiner',
+        BPM_AUTH_PASSWORD: 'change12_me',
         FH_USE_LOCAL_DB: true,
         FH_SERVICE_MAP: function() {
           /*
