@@ -47,6 +47,7 @@ module.exports = function(grunt) {
       // environment variables - see https://github.com/jsoverson/grunt-env for more information
       local: {
         FH_USE_LOCAL_DB: true,
+        BPM_MBAAS_SERVICE_ID: 'gpflsvhc4nbgkge5o5dxhkvj',
         FH_SERVICE_MAP: function() {
           /*
            * Define the mappings for your services here - for local development.
@@ -55,7 +56,7 @@ module.exports = function(grunt) {
            * or a remote instance.
            */
           var serviceMap = {
-            'wbyyx52jcku3ynnqywa666ry': 'http://127.0.0.1:8001',
+            'gpflsvhc4nbgkge5o5dxhkvj': 'http://127.0.0.1:8001',
             'SERVICE_GUID_2': 'https://host-and-path-to-service'
           };
           return JSON.stringify(serviceMap);
