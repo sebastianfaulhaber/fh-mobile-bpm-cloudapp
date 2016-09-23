@@ -33,5 +33,7 @@
     "debug": "grunt serve",
     "start": "node application.js"
   },
-  "license": "mit"
+  "license": "mit",
+  "eslintConfig": {
+    }
 }

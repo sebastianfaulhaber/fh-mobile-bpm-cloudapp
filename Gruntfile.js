@@ -48,6 +48,7 @@ module.exports = function(grunt) {
       local: {
         FH_USE_LOCAL_DB: true,
         BPM_MBAAS_SERVICE_ID: 'gpflsvhc4nbgkge5o5dxhkvj',
+        PRICING_MBAAS_SERVICE_ID: 'guwekkztiulv5s64hssir2mi',
         FH_SERVICE_MAP: function() {
           /*
            * Define the mappings for your services here - for local development.
@@ -56,7 +57,8 @@ module.exports = function(grunt) {
            * or a remote instance.
            */
           var serviceMap = {
-            'gpflsvhc4nbgkge5o5dxhkvj': 'http://127.0.0.1:8001',
+            'gpflsvhc4nbgkge5o5dxhkvj': 'https://sfaulhab-gpflsvhc4nbgkge5o5dxhkvj-dev.mbaas2.tom.redhatmobile.com',
+            'guwekkztiulv5s64hssir2mi': 'https://sfaulhab-guwekkztiulv5s64hssir2mi-dev.mbaas2.tom.redhatmobile.com',
             'SERVICE_GUID_2': 'https://host-and-path-to-service'
           };
           return JSON.stringify(serviceMap);
